@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Estilos/estilos.css">
+    <title>Inicio</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    
+}
+
+/*HEADER------------------------------------------------------------------------------------------------*/
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.3rem 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.header::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(80px);
+    z-index: -1 ;
+}
+
+.logo {
+    max-height: 50px;
+}
+.navegador a{
+    font-size: 1.15rem;
+    color:  #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5rem;
+    position: relative;
+}
+.nava{
+    font-size: 1.15rem;
+    color:  #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5rem;
+    position: relative;
+}
+
+.nava::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.nava:hover::after {
+    width: 100%;
+}
+
+#check{
+   display: none; 
+}
+
+.iconos{
+    font-size: 2.8rem;
+    right: 5%;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+ } 
+
+ @media (max-width:992px){
+    .header{
+        padding: 1.3rem 5%;
+    }
+ }
+ @media (max-width:768px){
+    .iconos{
+        display: inline-flex;
+    }
+
+    #check:checked~.iconos #menu-icono{
+        display: none;
+    }
+
+    .iconos #cerrar-icono{
+        display: none ;
+    }
+
+    #check:checked~.iconos #cerrar-icono{
+        display: block;
+    }
+
+    .navegador{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: rgba(0, 0, 0, .1);
+        backdrop-filter: blur(50px);
+        box-shadow: 0.5rem 1rem rgba(0, 0, 0, .1) ;
+        overflow: hidden;
+        transition: .3s ease;
+    }
+
+    #check:checked~.navegador{
+        height: 17.7rem;
+    }
+
+    .navegador a {
+        display: block;
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+        text-align: center;
+        transform: translateY(-50px);
+        opacity: 0;
+        transition: .3s ease;
+    }
+    #check:checked~.navegador a{
+        transform: translateY(0);
+        opacity: 1;
+        transition-delay: calc(.15s * var(--i));
+    }
+ }
+
+
+/*CONTENIDO INDEX----------------------------------------------------------------------------------------------------*/
+.hero {
+    background-image: url('../IMG/fondocorregcio_resized_top.jpeg');
+    width: 100%;
+    height: 600px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 0 20px; /* Espacio lateral para evitar que el contenido toque los bordes */
+}
+.hero-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Añade un overlay oscuro para mejor legibilidad */
+}
+
+.hero-content {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px; /* Limita el ancho en pantallas grandes */
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-primary, .btn-secondary, .btn-success {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 300ms ease;
+}
+
+.btn-primary {
+    background-color: #007BFF;
+}
+
+.btn-primary:hover {
+    background-color: #095791;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: #007BFF;
+}
+
+.btn-success {
+    background-color: #28a745; /* Fondo verde */
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Color más oscuro al pasar el mouse */
+}
+
+/* Ajustes Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2em; /* Reduce tamaño de fuente en pantallas medianas */
+    }
+
+    .hero p {
+        font-size: 1.2em; /* Reduce tamaño de fuente en pantallas medianas */
+    }
+
+    .buttons {
+        flex-direction: column; /* Coloca los botones en columna */
+        gap: 10px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.5em; /* Reduce tamaño de fuente en pantallas pequeñas */
+    }
+
+    .hero p {
+        font-size: 1em; /* Reduce tamaño de fuente en pantallas pequeñas */
+    }
+
+    .btn-primary, .btn-secondary, .btn-success {
+        font-size: 0.9em; /* Reduce tamaño de fuente en botones en pantallas pequeñas */
+        padding: 8px 15px;
+    }
+}
+
+/*CARRUSEL----------------------------------------------------*/
+.slider-wrapper {
+    position: relative;
+    max-width: 95%;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.slider {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 16/9;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+.slider img {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    scroll-snap-align: start;
+}
+.slider-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 15px 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.3));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.slider-nav a {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(150,150,150,0.7);
+    transition: all 0.3s ease;
+}
+.slider-nav a:hover,
+.slider-nav a:focus {
+    background-color: rgba(255,255,255,0.9);
+    transform: scale(1.2);
+}
+/******************/
+
+.clinica-section {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 2rem;
+    min-height: 400px;
+}
+
+.clinica-contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.clinica-img {
+    flex: 1;
+    min-width: 300px;
+}
+
+.clinica-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.clinica-contenido {
+    flex: 1;
+    padding: 1rem;
+}
+
+.clinica-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.clinica-text {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.mision-vision {
+    display: flex;
+    gap: 2rem;
+}
+
+.mv-contenedor {
+    flex: 1;
+}
+
+.mv-icon {
+    color: #ff6b6b;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .clinica-contenedor {
+        flex-direction: column;
+    }
+
+    .clinica-img {
+        min-width: 100%;
+    }
+
+    .mision-vision {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .clinica-contenido {
+        padding: 0;
+    }
+}
+
+
+/*FOOTER--------------------------------------------------------------------------------------------*/
+.pie-pagina{
+    width: 100%;
+    background-color: #16325B;
+}
+.pie-pagina .grupo-1{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap:50px;
+    padding: 45px 0px;
+}
+.pie-pagina .grupo-1 .box figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pie-pagina .grupo-1 .box figure img{
+    width: 250px;
+}
+.pie-pagina .grupo-1 .box h2{
+color: #fff;
+margin-bottom: 25px;
+font-size: 20px;
+
+}
+.pie-pagina .grupo-1 .box P{
+    color: #efefef;
+    margin-bottom: 10px;
+}
+.pie-pagina .grupo-1 .red-social a{
+    display: inline-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    margin-right: 10px;
+    background-color: #0d2033;
+    text-align: center;
+    border-radius: 50%;
+    transition: all 300ms ease;
+}
+.pie-pagina .grupo-1 .red-social a:hover{
+    color: #007BFF;
+    background-color: #fff;
+}
+.pie-pagina .grupo-2{
+    background-color: #0d2033;
+    padding: 15px 10px;
+    text-align: center;
+    color: #fff;
+}
+.pie-pagina .grupo-2 small{
+    font-size: 15px;
+}
+/* Add subtle transitions to improve interactivity */
+.pie-pagina .grupo-1 .box nav a {
+    color: #efefef;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+.pie-pagina .grupo-1 .box nav a:hover {
+    color: #007BFF;
+}
+@media screen and (max-width:800px) {
+    .pie-pagina .grupo-1{
+        width: 90%;
+        grid-template-columns: repeat(1,1fr);
+        grid-gap:30px;
+        padding: 35px 0px;
+        text-align: center;
+    }
+}
+
+/*PESTAÑA SOBRE NOSOTROS----------------------------------------------------------------------*/
+.banner {
+    height: 450px;
+    background-image: url('../IMG/relaxing-beagle-with-thoughtful-look-droopy-ears.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.banner-text {
+    color: #fff;
+    text-align: center;
+}
+
+/* Secciones de información */
+.info-section {
+    padding: 80px 0;
+    background-color: #0d2033;
+    color: #fff;
+}
+.info-section2 {
+    padding: 80px 0;
+}
+
+.info-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Galería */
+.gallery {
+    padding: 50px 0;
+    background-color: #333;
+    color: #fff;
+}
+
+.gallery-item {
+    margin-bottom: 30px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Mapa */
+.mapa-vet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 50px 0;
+}
+
+.mapa-vet iframe {
+    max-width: 100%;
+    width: 800px;
+    height: 450px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#title-mapa {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+
+/*PESTAÑA SERVICIOS-----------------------------------------------------------------------------------*/
+/* Banner Styles */
+.banner2 {
+    height: 450px; /* Fija la altura */
+    background-image: url('../IMG/bannerservicios2.jpeg'); /* Ruta a tu imagen */
+    border-bottom: 3px solid #fff; /* Línea blanca al final */
+    background-size: cover; /* Ajusta el tamaño para cubrir el contenedor */
+    background-position: center; /* Centra la imagen horizontal y verticalmente */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    position: relative; /* Útil si añades contenido adicional como texto */
+    margin-top: 5px;
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Añade un overlay oscuro para mejor legibilidad */
+}
+
+.banner-text {
+    max-width: 800px;
+    color: #fff;
+    padding: 20px;
+}
+
+.banner-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.banner-text .lead {
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    box-shadow: 0 0 15px 5px rgba(0, 255, 128, 0.6); /* Efecto de brillo verde */
+  }
+  
+  .card img {
+    transition: transform 0.3s, filter 0.3s;
+    height: 200px;
+  }
+  
+  
+  
+/* Contenedor de Modales */
+.contenedor-modales {
+    width: 100%;
+    min-height: 300px;
+    background-color: #0d2033;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1024px) {
+    .banner-text h1 {
+        font-size: 2.8rem;
+    }
+    
+    .contenedor-modales {
+        padding: 30px 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .banner2 {
+        height: 400px;
+    }
+    
+    .banner-text h1 {
+        font-size: 2.2rem;
+    }
+    
+    .banner-text .lead {
+        font-size: 1.1rem;
+    }
+    
+    .contenedor-modales {
+        flex-direction: column;
+        align-items: center;
+        min-height: auto;
+    }
+    .card{
+        width: 100%;
+    }
+    
+}
+
+@media screen and (max-width: 480px) {
+    .banner2 {
+        height: 300px;
+    }
+    
+    .banner-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .banner-text .lead {
+        font-size: 1rem;
+    }
+    
+    .contenedor-modales {
+        padding: 20px 10px;
+    }
+}
+ </style>
+</head>
+<body>
+    <?php include("../Templates/HEADER.PHP")?>
+    <section class="hero">
+        <div class="hero-overlay">
+        <div class="hero-content">
+            <h1>Proveemos cuidados especiales Para <br> Tus Mascotas!</h1>
+            <p>Ofrecemos servicios especiales para mascotas especiales!</p>
+            <div class="buttons">
+                <a href="../Paginas/SERVICIOS.PHP" class="btn-primary">Ve Nuestros Servicios!</a>
+                <a href="../Paginas/SOBRE.PHP" class="btn-secondary">Conócenos</a>
+            </div>
+        </div>
+        </div>
+    </section>
+    <section class="slider-wrapper">
+        <div class="slider" id="slider">
+            <img src="../IMG/¿Samieas.png" id="slider1" alt="Imagen 1">
+            <img src="../IMG/1.jpg" id="slider2" alt="Imagen 2">
+            <img src="../IMG/2.jpg" id="slider3" alt="Imagen 3">
+            <img src="../IMG/slider4.jpg" id="slider4" alt="Imagen 4">
+        </div>
+        <div class="slider-nav">
+            <a href="#slider1" aria-label="Ir a imagen 1"></a>
+            <a href="#slider2" aria-label="Ir a imagen 2"></a>
+            <a href="#slider3" aria-label="Ir a imagen 3"></a>
+            <a href="#slider4" aria-label="Ir a imagen 4"></a>
+        </div>
+    </section>
+
+        <section class="clinica-section">
+        <div class="clinica-contenedor">
+            <div class="clinica-img">
+                <img src="../IMG/lugar1.0.jpg" alt="Establecimiento">
+            </div>
+            <div class="clinica-contenido">
+                <h2 class="clinica-title">Clinica Veterinaria</h2>
+                <p class="clinica-text">
+                   Nos especialisamos en pequeñas especies, el cuidado, la atencion y salud de tus mascotas es nuestra prioridad, ademas de que puedes encontrar diferentes preductos para tu pequeño con nuestro servicio de PetShop
+                </p>
+                <div class="mision-vision">
+                    <div class="mv-contenedor">
+                        <div class="mv-icon">🐾</div>
+                        <h3>Nuestra Misión</h3>
+                        <p>Nos especializamos en el cuidado integral de pequeñas especies, priorizando la atención y la salud de tu mascota. Además, contamos con un servicio de PetShop donde encontrarás una amplia variedad de productos para satisfacer las necesidades de tu compañero</p>
+                    </div>
+                    <div class="mv-contenedor">
+                        <div class="mv-icon">✌️</div>
+                        <h3>Nuestra Visión</h3>
+                        <p>Ser una veterinaria con presencia intermunicipal que se distinga por proporcionar una calidad de servicios única a nuestros clientes y la contribución positiva a todo tipo de ejemplar animal </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        const slider = document.getElementById('slider');
+        const slides = slider.children;
+        let currentIndex = 0;
+        
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            slider.scrollTo({
+                left: currentIndex * slider.offsetWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        // Cambiar slide cada 3 segundos
+        setInterval(nextSlide, 4000);
+
+        // Control manual de navegación
+        const navLinks = document.querySelectorAll('.slider-nav a');
+        navLinks.forEach((link, index) => {
+            link.addEventListener('click', (e) => {
+                currentIndex = index;
+                slider.scrollTo({
+                    left: index * slider.offsetWidth,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+<?php include("../Templates/FOOTER.PHP") ?>
+
+</html>
