@@ -690,25 +690,49 @@ font-size: 20px;
  </style>
 </head>
 <body>
-    <?php include("../Templates/HEADER.PHP")?>
+    <header class="header">
+    <img src="logoprueba-removebg-preview.png" alt="Los Potrillos" class="logo">
+    <input type="checkbox" id="check">
+    <label for="check" class="iconos">
+    <i class='bx bx-menu' id="menu-icono"></i>
+    <i class='bx bx-x' id="cerrar-icono"></i>
+    </label>
+    <nav class="navegador">
+        <a href="INDEX.PHP" style="--i:0;" class="nava">Inicio</a>
+        <a href="SOBRE.PHP" style="--i:1;" class="nava">Sobre Nosotros</a>
+        <a href="SERVICIOS.PHP" style="--i:2;" class="nava">Servicios</a>
+
+        <?php
+$numero = "573222264068"; // Número de WhatsApp
+$mensaje = "Hola, quiero agendar una cita para mi mascota"; // Mensaje
+$linkWhatsApp = "https://wa.me/" . $numero . "?text=" . urlencode($mensaje);
+?>
+<a href="<?php echo $linkWhatsApp; ?>" class="btn btn-lg custom-btn">
+    <i class="fa-regular fa-calendar-plus fa-bounce" style="color: #ffffff;"></i>&nbsp;&nbsp;Agenda tu cita
+</a>
+
+
+        <a href="../LOGIN/LOGIN.PHP" style="--i:4;" class="btn btn-primary">Ingresar</a>
+</nav>
+    </header>
     <section class="hero">
         <div class="hero-overlay">
         <div class="hero-content">
             <h1>Proveemos cuidados especiales Para <br> Tus Mascotas!</h1>
             <p>Ofrecemos servicios especiales para mascotas especiales!</p>
             <div class="buttons">
-                <a href="../Paginas/SERVICIOS.PHP" class="btn-primary">Ve Nuestros Servicios!</a>
-                <a href="../Paginas/SOBRE.PHP" class="btn-secondary">Conócenos</a>
+                <a href="SERVICIOS.PHP" class="btn-primary">Ve Nuestros Servicios!</a>
+                <a href="SOBRE.PHP" class="btn-secondary">Conócenos</a>
             </div>
         </div>
         </div>
     </section>
     <section class="slider-wrapper">
         <div class="slider" id="slider">
-            <img src="../IMG/¿Samieas.png" id="slider1" alt="Imagen 1">
-            <img src="../IMG/1.jpg" id="slider2" alt="Imagen 2">
-            <img src="../IMG/2.jpg" id="slider3" alt="Imagen 3">
-            <img src="../IMG/slider4.jpg" id="slider4" alt="Imagen 4">
+            <img src="¿Samieas.png" id="slider1" alt="Imagen 1">
+            <img src="1.jpg" id="slider2" alt="Imagen 2">
+            <img src="2.jpg" id="slider3" alt="Imagen 3">
+            <img src="slider4.jpg" id="slider4" alt="Imagen 4">
         </div>
         <div class="slider-nav">
             <a href="#slider1" aria-label="Ir a imagen 1"></a>
@@ -721,7 +745,7 @@ font-size: 20px;
         <section class="clinica-section">
         <div class="clinica-contenedor">
             <div class="clinica-img">
-                <img src="../IMG/lugar1.0.jpg" alt="Establecimiento">
+                <img src="lugar1.0.jpg" alt="Establecimiento">
             </div>
             <div class="clinica-contenido">
                 <h2 class="clinica-title">Clinica Veterinaria</h2>
@@ -772,6 +796,58 @@ font-size: 20px;
         });
     </script>
 </body>
-<?php include("../Templates/FOOTER.PHP") ?>
+<footer class="pie-pagina">
+    <div class="grupo-1">
+        <div class="box">
+            <figure>
+                <a href="#" aria-label="Los Potrillos Home">
+                    <img 
+                        src="../IMG/logoprueba-removebg-preview.png" 
+                        alt="Los Potrillos Veterinary Services Logo" 
+                    >
+                </a>
+            </figure>
+        </div>
+        <div class="box">
+            <h2>Sobre Nosotros</h2>
+            <p>Fundado y dirigido por Fredy Alexy López Cortes, un profesional destacado en Medicina Veterinaria y Zootecnia.</p>
+            <p>Con formación académica de la UPTC Colombia y UNACH México, nos dedicamos a brindar servicios veterinarios de alta calidad.</p>
+            <nav>
+                <a href="../Paginas/SOBRE.PHP">Conoce Más</a>
+                <a href="../Paginas/SERVICIOS.PHP">Nuestros Servicios</a>
+            </nav>
+        </div>
+        <div class="box">
+            <h2>Síguenos</h2>
+            <div class="red-social">
+                <a 
+                    href="https://www.facebook.com/MgMvzFredyLopez" 
+                    class="fa-brands fa-facebook" 
+                    aria-label="Visita nuestro Facebook"
+                    rel="noopener noreferrer"
+                ></a>
+                <a 
+                    href="https://www.instagram.com/potrillos_vet" 
+                    class="fa-brands fa-instagram" 
+                    aria-label="Síguenos en Instagram"
+                    rel="noopener noreferrer"
+                ></a>
+                <a 
+                    href="#" 
+                    class="fa-brands fa-tiktok" 
+                    aria-label="Síguenos en TikTok"
+                    rel="noopener noreferrer"
+                ></a>
+            </div>
+        </div>
+    </div>
+    <div class="grupo-2">
+        <small>
+            &copy;2024 <b>Los Potrillos</b> - Todos los derechos reservados
+            <br>
+            <b>Desarrollado por: Daniel Rojas</b>
+        </small>
+    </div>
+</footer>
 
 </html>
