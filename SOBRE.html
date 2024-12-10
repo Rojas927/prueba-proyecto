@@ -150,7 +150,7 @@
 
 /*CONTENIDO INDEX----------------------------------------------------------------------------------------------------*/
 .hero {
-    background-image: url('../IMG/fondocorregcio_resized_top.jpeg');
+    background-image: url('fondocorregcio_resized_top.jpeg');
     width: 100%;
     height: 600px;
     background-repeat: no-repeat;
@@ -479,7 +479,7 @@ font-size: 20px;
 /*PESTAÑA SOBRE NOSOTROS----------------------------------------------------------------------*/
 .banner {
     height: 450px;
-    background-image: url('../IMG/relaxing-beagle-with-thoughtful-look-droopy-ears.jpg');
+    background-image: url('relaxing-beagle-with-thoughtful-look-droopy-ears.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -571,7 +571,7 @@ font-size: 20px;
 /* Banner Styles */
 .banner2 {
     height: 450px; /* Fija la altura */
-    background-image: url('../IMG/bannerservicios2.jpeg'); /* Ruta a tu imagen */
+    background-image: url('bannerservicios2.jpeg'); /* Ruta a tu imagen */
     border-bottom: 3px solid #fff; /* Línea blanca al final */
     background-size: cover; /* Ajusta el tamaño para cubrir el contenedor */
     background-position: center; /* Centra la imagen horizontal y verticalmente */
@@ -691,7 +691,31 @@ font-size: 20px;
   <style>
 </head>
 <body>
-    <?php include("../Templates/HEADER.PHP") ?>
+   <header class="header">
+    <img src="logoprueba-removebg-preview.png" alt="Los Potrillos" class="logo">
+    <input type="checkbox" id="check">
+    <label for="check" class="iconos">
+    <i class='bx bx-menu' id="menu-icono"></i>
+    <i class='bx bx-x' id="cerrar-icono"></i>
+    </label>
+    <nav class="navegador">
+        <a href="index.html" style="--i:0;" class="nava">Inicio</a>
+        <a href="SOBRE.html" style="--i:1;" class="nava">Sobre Nosotros</a>
+        <a href="SERVICIOS.html" style="--i:2;" class="nava">Servicios</a>
+
+        <?php
+$numero = "573222264068"; // Número de WhatsApp
+$mensaje = "Hola, quiero agendar una cita para mi mascota"; // Mensaje
+$linkWhatsApp = "https://wa.me/" . $numero . "?text=" . urlencode($mensaje);
+?>
+<a href="<?php echo $linkWhatsApp; ?>" class="btn btn-lg custom-btn">
+    <i class="fa-regular fa-calendar-plus fa-bounce" style="color: #ffffff;"></i>&nbsp;&nbsp;Agenda tu cita
+</a>
+
+
+        <a href="../LOGIN/LOGIN.PHP" style="--i:4;" class="btn btn-primary">Ingresar</a>
+</nav>
+    </header>
     <section class="banner">
         <div class="banner-overlay">
             <div class="banner-text">
@@ -785,6 +809,58 @@ font-size: 20px;
     
 
 </body>
-<?php include("../Templates/FOOTER.PHP") ?>
+<footer class="pie-pagina">
+    <div class="grupo-1">
+        <div class="box">
+            <figure>
+                <a href="#" aria-label="Los Potrillos Home">
+                    <img 
+                        src="logoprueba-removebg-preview.png" 
+                        alt="Los Potrillos Veterinary Services Logo" 
+                    >
+                </a>
+            </figure>
+        </div>
+        <div class="box">
+            <h2>Sobre Nosotros</h2>
+            <p>Fundado y dirigido por Fredy Alexy López Cortes, un profesional destacado en Medicina Veterinaria y Zootecnia.</p>
+            <p>Con formación académica de la UPTC Colombia y UNACH México, nos dedicamos a brindar servicios veterinarios de alta calidad.</p>
+            <nav>
+                <a href="SOBRE.html">Conoce Más</a>
+                <a href="SERVICIOS.html">Nuestros Servicios</a>
+            </nav>
+        </div>
+        <div class="box">
+            <h2>Síguenos</h2>
+            <div class="red-social">
+                <a 
+                    href="https://www.facebook.com/MgMvzFredyLopez" 
+                    class="fa-brands fa-facebook" 
+                    aria-label="Visita nuestro Facebook"
+                    rel="noopener noreferrer"
+                ></a>
+                <a 
+                    href="https://www.instagram.com/potrillos_vet" 
+                    class="fa-brands fa-instagram" 
+                    aria-label="Síguenos en Instagram"
+                    rel="noopener noreferrer"
+                ></a>
+                <a 
+                    href="#" 
+                    class="fa-brands fa-tiktok" 
+                    aria-label="Síguenos en TikTok"
+                    rel="noopener noreferrer"
+                ></a>
+            </div>
+        </div>
+    </div>
+    <div class="grupo-2">
+        <small>
+            &copy;2024 <b>Los Potrillos</b> - Todos los derechos reservados
+            <br>
+            <b>Desarrollado por: Daniel Rojas</b>
+        </small>
+    </div>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
